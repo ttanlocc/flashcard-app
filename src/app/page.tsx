@@ -3,6 +3,7 @@ import path from 'path';
 import Papa from 'papaparse';
 import { Flashcard } from '@/types/types';
 import { FlashcardViewer } from '@/components/FlashcardViewer';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 
 const FlipCard = ({ card }: { card: Flashcard }) => {
   return (
@@ -45,8 +46,9 @@ export default async function HomePage() {
   const flashcards = await getFlashcards();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-8">
-      <h1 className="mb-12 text-5xl font-extrabold text-gray-800">
+    <main className="relative flex min-h-screen flex-col items-center justify-center bg-gray-100 p-8 dark:bg-gray-900">
+      <ThemeSwitcher />
+      <h1 className="mb-12 text-center text-4xl font-extrabold text-gray-800 sm:text-5xl dark:text-gray-100">
         Vietnamese Flashcards
       </h1>
       <FlashcardViewer flashcards={flashcards} />
