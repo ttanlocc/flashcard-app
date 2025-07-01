@@ -2,7 +2,7 @@ import { Flashcard } from '@/types/types';
 
 export const ListView = ({ flashcards }: { flashcards: Flashcard[] }) => {
   return (
-    <div className="w-full max-w-4xl rounded-lg bg-white p-4 shadow-md dark:bg-gray-800 sm:p-6">
+    <div className="w-full max-w-4xl rounded-2xl bg-white p-4 shadow-lg dark:bg-gray-800 sm:p-6">
       <div className="overflow-x-auto">
         <table className="w-full min-w-full text-left text-sm text-gray-700 dark:text-gray-300">
           <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
