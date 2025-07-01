@@ -3,7 +3,6 @@ import path from 'path';
 import Papa from 'papaparse';
 import { Flashcard } from '@/types/types';
 import { FlashcardApp } from '@/components/FlashcardApp';
-import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 
 async function getFlashcards(): Promise<Flashcard[]> {
   const csvFilePath = path.join(process.cwd(), 'src', 'data', 'flashcards.csv');
@@ -27,11 +26,7 @@ export default async function HomePage() {
   const flashcards = await getFlashcards();
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4 sm:p-8 dark:bg-gray-900">
-      <ThemeSwitcher />
-      <h1 className="mb-8 text-center text-4xl font-extrabold text-gray-800 sm:text-5xl dark:text-gray-100">
-        Vietnamese Flashcards
-      </h1>
+    <main className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <FlashcardApp flashcards={flashcards} />
     </main>
   );
