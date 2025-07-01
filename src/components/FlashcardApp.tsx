@@ -108,7 +108,7 @@ export const FlashcardApp = ({ flashcards }: { flashcards: Flashcard[] }) => {
         <UnitSwitcher units={units} selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} />
       </div>
 
-      <div className="w-full">
+      <div className="flex w-full justify-center">
         {view === 'card' ? (
           <FlashcardViewer flashcards={filteredFlashcards} />
         ) : (
