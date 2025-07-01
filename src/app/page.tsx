@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Papa from 'papaparse';
 import { Flashcard } from '@/types/types';
+import { FlashcardViewer } from '@/components/FlashcardViewer';
 
 const FlipCard = ({ card }: { card: Flashcard }) => {
   return (
@@ -26,11 +27,15 @@ async function getFlashcards(): Promise<Flashcard[]> {
   const csvFilePath = path.join(process.cwd(), 'src', 'data', 'flashcards.csv');
   const csvFile = fs.readFileSync(csvFilePath, 'utf8');
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     Papa.parse(csvFile, {
       header: true,
+      skipEmptyLines: true,
       complete: (results) => {
         resolve(results.data as Flashcard[]);
+      },
+      error: (error: Error) => {
+        reject(error);
       },
     });
   });
@@ -41,12 +46,10 @@ export default async function HomePage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-8">
-      <h1 className="mb-12 text-5xl font-extrabold text-gray-800">Vietnamese Flashcards</h1>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {flashcards.filter(card => card['Từ vựng']).map((card, index) => (
-          <FlipCard key={index} card={card} />
-        ))}
-      </div>
+      <h1 className="mb-12 text-5xl font-extrabold text-gray-800">
+        Vietnamese Flashcards
+      </h1>
+      <FlashcardViewer flashcards={flashcards} />
     </main>
   );
 }
