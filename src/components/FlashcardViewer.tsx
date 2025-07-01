@@ -35,6 +35,8 @@ export const FlashcardViewer = ({ flashcards }: { flashcards: Flashcard[] }) => 
 
   const totalPages = flashcards.length;
   const currentCard = flashcards[currentPage];
+  
+  const progressPercentage = totalPages > 0 ? ((currentPage + 1) / totalPages) * 100 : 0;
 
   useEffect(() => {
     setIsFlipped(false);
@@ -64,7 +66,7 @@ export const FlashcardViewer = ({ flashcards }: { flashcards: Flashcard[] }) => 
           />
         )}
       </div>
-      <div className="mt-8 flex items-center justify-center gap-4">
+      <div className="mt-8 flex w-full items-center justify-between">
         <button
           onClick={goToPreviousPage}
           disabled={currentPage === 0}
@@ -72,9 +74,19 @@ export const FlashcardViewer = ({ flashcards }: { flashcards: Flashcard[] }) => 
         >
           Previous
         </button>
-        <span className="text-lg font-medium text-gray-700 dark:text-gray-300">
-          Page {currentPage + 1} of {totalPages}
-        </span>
+        
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            {currentPage + 1} / {totalPages}
+          </span>
+          <div className="w-32 h-1.5 rounded-full bg-gray-200 dark:bg-gray-700">
+            <div
+              className="h-1.5 rounded-full bg-blue-500 transition-all duration-300 ease-out"
+              style={{ width: `${progressPercentage}%` }}
+            ></div>
+          </div>
+        </div>
+
         <button
           onClick={goToNextPage}
           disabled={currentPage >= totalPages - 1}
