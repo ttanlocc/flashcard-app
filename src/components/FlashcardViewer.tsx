@@ -31,23 +31,17 @@ const FlipCard = ({ card, isFlipped, onClick }: { card: Flashcard; isFlipped: bo
 
 export const FlashcardViewer = ({ flashcards }: { flashcards: Flashcard[] }) => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [flippedStates, setFlippedStates] = useState([false, false]);
+  const [isFlipped, setIsFlipped] = useState(false);
 
-  const cardsPerPage = 2;
-  const totalPages = Math.ceil(flashcards.length / cardsPerPage);
-  const currentCards = flashcards.slice(
-    currentPage * cardsPerPage,
-    (currentPage + 1) * cardsPerPage
-  );
+  const totalPages = flashcards.length;
+  const currentCard = flashcards[currentPage];
 
   useEffect(() => {
-    setFlippedStates(new Array(currentCards.length).fill(false));
-  }, [currentPage, currentCards.length]);
+    setIsFlipped(false);
+  }, [currentPage]);
 
-  const handleCardFlip = (index: number) => {
-    const newFlippedStates = [...flippedStates];
-    newFlippedStates[index] = !newFlippedStates[index];
-    setFlippedStates(newFlippedStates);
+  const handleCardFlip = () => {
+    setIsFlipped((prev) => !prev);
   };
 
   const goToPreviousPage = () => {
@@ -59,16 +53,16 @@ export const FlashcardViewer = ({ flashcards }: { flashcards: Flashcard[] }) => 
   };
 
   return (
-    <div className="flex w-full max-w-5xl flex-col items-center px-4">
-      <div className="mb-8 grid w-full min-h-[16rem] grid-cols-1 items-center gap-8 md:grid-cols-2">
-        {currentCards.map((card, index) => (
+    <div className="flex w-full max-w-md flex-col items-center px-4 sm:max-w-lg">
+      <div className="mb-8 w-full min-h-[16rem] flex items-center justify-center">
+        {currentCard && (
           <FlipCard
-            key={card['Từ vựng']}
-            card={card}
-            isFlipped={flippedStates[index]}
-            onClick={() => handleCardFlip(index)}
+            key={currentCard['Từ vựng']}
+            card={currentCard}
+            isFlipped={isFlipped}
+            onClick={handleCardFlip}
           />
-        ))}
+        )}
       </div>
       <div className="mt-8 flex items-center justify-center gap-4">
         <button
