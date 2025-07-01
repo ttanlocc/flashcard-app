@@ -10,7 +10,7 @@ type ViewMode = 'card' | 'list';
 
 const ViewSwitcher = ({ view, setView }: { view: ViewMode; setView: (view: ViewMode) => void }) => {
   return (
-    <div className="rounded-full bg-gray-200 p-1 dark:bg-gray-700">
+    <div className="absolute left-4 top-4 z-20 rounded-full bg-gray-200 p-1 dark:bg-gray-700">
       <button
         onClick={() => setView('card')}
         className={`w-24 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
