@@ -55,20 +55,9 @@ export const FlashcardViewer = ({ flashcards }: { flashcards: Flashcard[] }) => 
   };
 
   return (
-    <div className="flex w-full max-w-xl items-center justify-center gap-2 px-4 sm:gap-4">
-       <button
-        onClick={goToPreviousPage}
-        disabled={currentPage === 0}
-        className="rounded-full bg-gray-800 p-3 text-white shadow-sm transition hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-300"
-        aria-label="Previous Card"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
-      </button>
-
+    <div className="flex w-full max-w-2xl flex-col items-center gap-4 px-4">
       <div className="flex w-full max-w-md flex-col items-center sm:max-w-lg">
-        <div className="w-full min-h-[16rem] flex items-center justify-center">
+        <div className="flex min-h-[16rem] w-full items-center justify-center">
           {currentCard && (
             <FlipCard
               key={currentCard['Từ vựng']}
@@ -78,29 +67,57 @@ export const FlashcardViewer = ({ flashcards }: { flashcards: Flashcard[] }) => 
             />
           )}
         </div>
-        <div className="mt-8 flex w-full flex-col items-center justify-between gap-3">
+      </div>
+
+      <div className="flex w-full items-center justify-between gap-4">
+        <button
+          onClick={goToPreviousPage}
+          disabled={currentPage === 0}
+          className="rounded-full bg-gray-800 p-3 text-white shadow-sm transition hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-300"
+          aria-label="Previous Card"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2.5}
+            stroke="currentColor"
+            className="h-5 w-5"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+
+        <div className="flex w-full flex-col items-center justify-between gap-3">
           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              {currentPage + 1} / {totalPages}
+            {currentPage + 1} / {totalPages}
           </span>
-          <div className="w-full max-w-xs h-1.5 rounded-full bg-gray-200 dark:bg-gray-700">
-              <div
-                className="h-1.5 rounded-full bg-blue-500 transition-all duration-300 ease-out"
-                style={{ width: `${progressPercentage}%` }}
-              ></div>
+          <div className="h-1.5 w-full max-w-xs rounded-full bg-gray-200 dark:bg-gray-700">
+            <div
+              className="h-1.5 rounded-full bg-blue-500 transition-all duration-300 ease-out"
+              style={{ width: `${progressPercentage}%` }}
+            ></div>
           </div>
         </div>
+
+        <button
+          onClick={goToNextPage}
+          disabled={currentPage >= totalPages - 1}
+          className="rounded-full bg-gray-800 p-3 text-white shadow-sm transition hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-300"
+          aria-label="Next Card"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2.5}
+            stroke="currentColor"
+            className="h-5 w-5"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
       </div>
-      
-      <button
-        onClick={goToNextPage}
-        disabled={currentPage >= totalPages - 1}
-        className="rounded-full bg-gray-800 p-3 text-white shadow-sm transition hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-300"
-        aria-label="Next Card"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>
-      </button>
     </div>
   );
 }; 
