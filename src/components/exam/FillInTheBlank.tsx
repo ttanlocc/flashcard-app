@@ -1,19 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { ExamPart, FillInBlankQuestion } from '@/types/types';
 
 interface FillInTheBlankProps {
   part: ExamPart;
-  userAnswers: { [questionId: string]: any };
-  onAnswerChange: (questionId: string, answer: any) => void;
+  userAnswers: { [questionId: string]: unknown };
+  onAnswerChange: (questionId: string, answer: string) => void;
 }
 
 export const FillInTheBlank = ({ part, userAnswers, onAnswerChange }: FillInTheBlankProps) => {
-
-  const handleInputChange = (questionId: string, value: string) => {
-    onAnswerChange(questionId, value);
-  };
 
   const questions = part.questions as FillInBlankQuestion[];
 
@@ -45,8 +40,8 @@ export const FillInTheBlank = ({ part, userAnswers, onAnswerChange }: FillInTheB
                 <span>{parts[0]}</span>
                 <input
                   type="text"
-                  value={userAnswers[q.id] || ''}
-                  onChange={(e) => handleInputChange(q.id, e.target.value)}
+                  value={(userAnswers[q.id] as string) || ''}
+                  onChange={(e) => onAnswerChange(q.id, e.target.value)}
                   className="inline-block w-48 rounded-md border-gray-300 bg-white px-2 py-1 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
                 />
                 <span>{parts[1]}</span>

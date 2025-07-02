@@ -1,19 +1,24 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { unit1Exam } from '@/data/exams/unit1';
-import { Exam, ExamPart } from '@/types/types';
+import { Exam, ExamPart, Question } from '@/types/types';
 import { FillInTheBlank } from './exam/FillInTheBlank';
 import { MultipleChoice } from './exam/MultipleChoice';
 import { Matching } from './exam/Matching';
 import { SentenceWriting } from './exam/SentenceWriting';
 import { useRouter } from 'next/navigation';
 
+type Answer = string | Record<string, string>;
 interface UserAnswers {
-  [questionId: string]: any;
+  [questionId: string]: Answer;
 }
 
-const renderExamPart = (part: ExamPart, userAnswers: UserAnswers, handleAnswerChange: (questionId: string, answer: any) => void) => {
+const renderExamPart = (
+  part: ExamPart, 
+  userAnswers: UserAnswers, 
+  handleAnswerChange: (questionId: string, answer: Answer) => void
+) => {
   switch (part.type) {
     case 'fill_in_blank':
       return <FillInTheBlank key={part.title} part={part} userAnswers={userAnswers} onAnswerChange={handleAnswerChange} />;
@@ -38,46 +43,22 @@ export const ExamView = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    if (exam && timeLeft > 0) {
-      const timer = setTimeout(() => {
-        setTimeLeft(timeLeft - 1);
-      }, 1000);
-      return () => clearTimeout(timer);
-    } else if (timeLeft === 0) {
-      handleSubmit();
-    }
-  }, [exam, timeLeft]);
-
-  const handleStartExam = () => {
-    if (examCode === unit1Exam.id) {
-      setExam(unit1Exam);
-      setError('');
-    } else {
-      setExam(null);
-      setError('Mã bài kiểm tra không hợp lệ.');
-    }
-  };
-
-  const handleAnswerChange = (questionId: string, answer: any) => {
+  const handleAnswerChange = (questionId: string, answer: Answer) => {
     setUserAnswers(prev => ({...prev, [questionId]: answer}))
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     if (isSubmitting || !exam) return;
     setIsSubmitting(true);
 
     const formattedAnswers = Object.keys(userAnswers).map(questionId => {
-      // For matching questions, the answer is an object of pairs.
-      // We need to convert it to an array of {item, match}
-      const question = exam.parts.flatMap(p => p.questions as any[]).find(q => q.id === questionId);
-      const part = exam.parts.find(p => (p.questions as any[]).some(q => q.id === questionId));
+      const part = exam.parts.find(p => (p.questions as Question[]).some(q => q.id === questionId));
 
       if (part?.type === 'matching') {
         const answerObject = userAnswers[questionId];
         return {
           questionId,
-          answer: Object.keys(answerObject).map(item => ({ item, match: answerObject[item] }))
+          answer: Object.keys(answerObject).map(item => ({ item, match: (answerObject as Record<string,string>)[item] }))
         }
       }
 
@@ -100,7 +81,6 @@ export const ExamView = () => {
 
       const results = await response.json();
       
-      // Store results in session storage to pass to the results page
       sessionStorage.setItem('examResults', JSON.stringify(results));
       
       router.push('/exam/results');
@@ -109,6 +89,27 @@ export const ExamView = () => {
       console.error(error);
       alert('Đã có lỗi xảy ra khi nộp bài. Vui lòng thử lại.');
       setIsSubmitting(false);
+    }
+  }, [exam, isSubmitting, router, userAnswers]);
+
+  useEffect(() => {
+    if (exam && timeLeft > 0) {
+      const timer = setTimeout(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    } else if (timeLeft === 0) {
+      handleSubmit();
+    }
+  }, [exam, timeLeft, handleSubmit]);
+
+  const handleStartExam = () => {
+    if (examCode === unit1Exam.id) {
+      setExam(unit1Exam);
+      setError('');
+    } else {
+      setExam(null);
+      setError('Mã bài kiểm tra không hợp lệ.');
     }
   };
 

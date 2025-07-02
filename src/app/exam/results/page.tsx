@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { MatchingPair, UserAnswerPayload } from '@/types/types';
 
 interface Result {
   questionId: string;
   correct: boolean;
-  userAnswer: any;
-  correctAnswer: any;
+  userAnswer: UserAnswerPayload | null;
+  correctAnswer: string | string[] | MatchingPair[] | null;
   correctMatches?: number;
   totalMatches?: number;
 }

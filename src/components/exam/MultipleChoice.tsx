@@ -1,19 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { ExamPart, MultipleChoiceQuestion } from '@/types/types';
 
 interface MultipleChoiceProps {
   part: ExamPart;
-  userAnswers: { [questionId: string]: any };
-  onAnswerChange: (questionId: string, answer: any) => void;
+  userAnswers: { [questionId: string]: unknown };
+  onAnswerChange: (questionId: string, answer: string) => void;
 }
 
 export const MultipleChoice = ({ part, userAnswers, onAnswerChange }: MultipleChoiceProps) => {
-
-  const handleOptionChange = (questionId: string, option: string) => {
-    onAnswerChange(questionId, option);
-  };
 
   const questions = part.questions as MultipleChoiceQuestion[];
 
@@ -35,7 +30,7 @@ export const MultipleChoice = ({ part, userAnswers, onAnswerChange }: MultipleCh
                     name={q.id}
                     value={option}
                     checked={userAnswers[q.id] === option}
-                    onChange={() => handleOptionChange(q.id, option)}
+                    onChange={() => onAnswerChange(q.id, option)}
                     className="h-4 w-4 cursor-pointer text-blue-600 focus:ring-blue-500"
                   />
                   <span>{option}</span>

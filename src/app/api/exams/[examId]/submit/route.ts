@@ -1,10 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { unit1Exam } from '@/data/exams/unit1';
-import { Exam, UserAnswer, Question } from '@/types/types';
+import { Exam, UserAnswer, Question, MatchingPair } from '@/types/types';
 
 const exams: Record<string, Exam> = {
   'UNIT1-EXAM-001': unit1Exam,
 };
+
+type ResultCorrectAnswer = string | string[] | MatchingPair[] | null | undefined;
+interface ResultDetail {
+  questionId: string;
+  correct: boolean;
+  userAnswer: UserAnswer['answer'] | null;
+  correctAnswer: ResultCorrectAnswer;
+  correctMatches?: number;
+  totalMatches?: number;
+}
 
 export async function POST(
   req: NextRequest,
@@ -22,7 +32,7 @@ export async function POST(
     }
 
     let score = 0;
-    const results: any[] = [];
+    const results: ResultDetail[] = [];
     let totalPoints = 0;
 
     exam.parts.forEach((part) => {
@@ -33,7 +43,7 @@ export async function POST(
         const userAnswer = userAnswers.find((ans) => ans.questionId === question.id);
 
         let isCorrect = false;
-        let correctAnswer: any = null;
+        let correctAnswer: ResultCorrectAnswer = null;
 
         switch (part.type) {
           case 'fill_in_blank': {
@@ -41,7 +51,7 @@ export async function POST(
             const q = question as import('@/types/types').FillInBlankQuestion;
             correctAnswer = q.answer;
             if (userAnswer) {
-              isCorrect = q.answer.includes(userAnswer.answer);
+              isCorrect = q.answer.includes(userAnswer.answer as string);
             }
             break;
           }

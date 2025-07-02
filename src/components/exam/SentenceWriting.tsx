@@ -1,19 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { ExamPart, SentenceWritingQuestion } from '@/types/types';
 
 interface SentenceWritingProps {
   part: ExamPart;
-  userAnswers: { [questionId: string]: any };
-  onAnswerChange: (questionId: string, answer: any) => void;
+  userAnswers: { [questionId: string]: unknown };
+  onAnswerChange: (questionId: string, answer: string) => void;
 }
 
 export const SentenceWriting = ({ part, userAnswers, onAnswerChange }: SentenceWritingProps) => {
-
-  const handleTextChange = (questionId: string, text: string) => {
-    onAnswerChange(questionId, text);
-  };
 
   const questions = part.questions as SentenceWritingQuestion[];
 
@@ -31,8 +26,8 @@ export const SentenceWriting = ({ part, userAnswers, onAnswerChange }: SentenceW
               </p>
             </div>
             <textarea
-              value={userAnswers[q.id] || ''}
-              onChange={(e) => handleTextChange(q.id, e.target.value)}
+              value={(userAnswers[q.id] as string) || ''}
+              onChange={(e) => onAnswerChange(q.id, e.target.value)}
               rows={3}
               className="w-full rounded-md border-gray-300 bg-white p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
               placeholder="Viết câu của bạn ở đây..."

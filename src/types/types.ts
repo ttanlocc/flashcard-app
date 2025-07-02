@@ -61,7 +61,9 @@ export interface Exam {
   parts: ExamPart[];
 }
 
+export type UserAnswerPayload = string | Array<{ item: string; match: string }>;
+
 export interface UserAnswer {
   questionId: string;
-  answer: any;
+  answer: UserAnswerPayload;
 } 

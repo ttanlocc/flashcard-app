@@ -2,24 +2,26 @@
 
 import { ExamPart, MatchingQuestion } from '@/types/types';
 
+type MatchingAnswer = Record<string, string>;
+
 interface MatchingProps {
   part: ExamPart;
-  userAnswers: { [questionId: string]: any };
-  onAnswerChange: (questionId: string, answer: any) => void;
+  userAnswers: { [questionId: string]: unknown };
+  onAnswerChange: (questionId: string, answer: MatchingAnswer) => void;
 }
 
 export const Matching = ({ part, userAnswers, onAnswerChange }: MatchingProps) => {
   const question = part.questions[0] as MatchingQuestion;
 
   const handleSelectChange = (item: string, value: string) => {
-    const currentAnswers = userAnswers[question.id] || {};
+    const currentAnswers = (userAnswers[question.id] as MatchingAnswer) || {};
     const newAnswers = { ...currentAnswers, [item]: value };
     onAnswerChange(question.id, newAnswers);
   };
 
   const items = question.pairs.map((p) => p.item);
   const options = question.pairs.map((p) => p.match);
-  const currentSelection = userAnswers[question.id] || {};
+  const currentSelection = (userAnswers[question.id] as MatchingAnswer) || {};
 
   return (
     <div className="mb-8">
