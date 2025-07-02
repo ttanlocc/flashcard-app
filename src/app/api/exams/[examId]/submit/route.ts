@@ -18,10 +18,10 @@ interface ResultDetail {
 
 export async function POST(
   req: NextRequest,
-  context: { params: { examId: string } }
+  { params }: { params: { examId: string } }
 ) {
   try {
-    const { examId } = context.params;
+    const { examId } = params;
     const body = await req.json();
     const userAnswers: UserAnswer[] = body.answers;
 
