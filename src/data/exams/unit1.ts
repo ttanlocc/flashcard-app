@@ -47,16 +47,16 @@ export const unit1Exam: Exam = {
           answer: ['confirm'],
         },
         { id: 'q6', question: 'He sent a __________ to all employees about the new policy.', answer: ['memo'] },
-        { id: 'q7', question: 'Sorry, I'm __________. The traffic was bad.', answer: ['late'] },
+        { id: 'q7', question: "Sorry, I'm __________. The traffic was bad.", answer: ['late'] },
         {
           id: 'q8',
-          question: 'I am not __________ tomorrow. Let's meet next Monday.',
+          question: "I am not __________ tomorrow. Let's meet next Monday.",
           answer: ['available'],
         },
         { id: 'q9', question: 'They had to __________ the concert because of the rain.', answer: ['cancel'] },
         {
           id: 'q10',
-          question: 'Let's check the __________ to see when the class starts.',
+          question: "Let's check the __________ to see when the class starts.",
           answer: ['timetable'],
         },
       ],
@@ -80,7 +80,7 @@ export const unit1Exam: Exam = {
         },
         {
           id: 'q13',
-          question: 'We must act fast. It's **urgent**.',
+          question: "We must act fast. It's **urgent**.",
           options: ['có sẵn', 'sớm', 'khẩn cấp', 'đúng giờ'],
           answer: 'khẩn cấp',
         },
