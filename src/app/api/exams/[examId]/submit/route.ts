@@ -16,18 +16,12 @@ interface ResultDetail {
   totalMatches?: number;
 }
 
-interface RouteContext {
-  params: {
-    examId: string;
-  };
-}
-
 export async function POST(
   req: NextRequest,
-  context: RouteContext,
+  { params }: { params: { examId: string } }
 ) {
   try {
-    const { examId } = context.params;
+    const { examId } = params;
     const body = await req.json();
     const userAnswers: UserAnswer[] = body.answers;
 
