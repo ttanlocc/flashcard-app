@@ -4,9 +4,10 @@ import { useState, useMemo } from 'react';
 import { Flashcard } from '@/types/types';
 import { FlashcardViewer } from '@/components/FlashcardViewer';
 import { ListView } from '@/components/ListView';
+import { ExamView } from '@/components/ExamView';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
-type ViewMode = 'card' | 'list';
+type ViewMode = 'card' | 'list' | 'exam';
 
 const ViewSwitcher = ({ view, setView }: { view: ViewMode; setView: (view: ViewMode) => void }) => {
   return (
@@ -30,6 +31,16 @@ const ViewSwitcher = ({ view, setView }: { view: ViewMode; setView: (view: ViewM
         }`}
       >
         List
+      </button>
+      <button
+        onClick={() => setView('exam')}
+        className={`w-24 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+          view === 'exam'
+            ? 'bg-white text-gray-900 shadow-md dark:bg-gray-500 dark:text-gray-100'
+            : 'text-gray-600 hover:bg-gray-300 dark:text-gray-300 dark:hover:bg-gray-600'
+        }`}
+      >
+        Exam
       </button>
     </div>
   );
@@ -111,8 +122,10 @@ export const FlashcardApp = ({ flashcards }: { flashcards: Flashcard[] }) => {
       <div className="flex w-full justify-center">
         {view === 'card' ? (
           <FlashcardViewer flashcards={filteredFlashcards} />
-        ) : (
+        ) : view === 'list' ? (
           <ListView flashcards={filteredFlashcards} />
+        ) : (
+          <ExamView />
         )}
       </div>
     </div>
