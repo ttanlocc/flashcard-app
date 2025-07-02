@@ -117,4 +117,4 @@ export const ExamView = () => {
       </div>
     </div>
   );
-}; 
+};

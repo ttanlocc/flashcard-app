@@ -1,61 +1,65 @@
-Unit,Từ vựng,Nghĩa tiếng Việt,Định nghĩa tiếng Anh,Từ loại
-Unit 1: Appointments & Time,schedule,lịch trình,a plan of activities or events,noun
-Unit 1: Appointments & Time,delay,trì hoãn,to postpone; to make late,verb
-Unit 1: Appointments & Time,on time,đúng giờ,punctual; not late,phrase
-Unit 1: Appointments & Time,confirm,xác nhận,to make sure something is true or set,verb
-Unit 1: Appointments & Time,cancel,hủy,to call off or stop something planned,verb
-Unit 1: Appointments & Time,urgent,khẩn cấp,requiring immediate attention,adj
-Unit 1: Appointments & Time,available,có sẵn,"ready for use, free to do something",adj
-Unit 1: Appointments & Time,reschedule,lên lịch lại,to set a new time for something,verb
-Unit 1: Appointments & Time,appointment,cuộc hẹn,a scheduled meeting or time,noun
-Unit 1: Appointments & Time,notice,"thông báo, chú ý",information or warning given in advance,noun
-Unit 1: Appointments & Time,late,trễ,not on time,adj
-Unit 1: Appointments & Time,early,sớm,before the expected time,adj
-Unit 2: Customer & Communication,polite,lịch sự,showing good manners,adj
-Unit 2: Customer & Communication,request,yêu cầu,a demand or ask for something,noun
-Unit 2: Customer & Communication,contact,liên hệ,to get in touch with someone,verb
-Unit 2: Customer & Communication,respond,phản hồi,to answer,verb
-Unit 2: Customer & Communication,apologize,xin lỗi,to say sorry,verb
-Unit 2: Customer & Communication,feedback,phản hồi,opinion or response about a service,noun
-Unit 2: Customer & Communication,passenger,hành khách,a person who is transported,noun
-Unit 2: Customer & Communication,service,dịch vụ,help or work offered to others,noun
-Unit 2: Customer & Communication,complaint,phàn nàn,a statement of dissatisfaction,noun
-Unit 2: Customer & Communication,clear,rõ ràng,easy to understand,adj
-Unit 2: Customer & Communication,repeat,lặp lại,to say again,verb
-Unit 2: Customer & Communication,explain,giải thích,to make something clear,verb
-Unit 3: Location & Directions,destination,điểm đến,the place someone is going to,noun
-Unit 3: Location & Directions,route,tuyến đường,path from one place to another,noun
-Unit 3: Location & Directions,traffic,giao thông,movement of vehicles,noun
-Unit 3: Location & Directions,detour,đường vòng,a different way due to a block,noun
-Unit 3: Location & Directions,nearby,gần,close in distance,adj
-Unit 3: Location & Directions,address,địa chỉ,the number and street of a place,noun
-Unit 3: Location & Directions,direction,hướng dẫn đường đi,instructions to go somewhere,noun
-Unit 3: Location & Directions,map,bản đồ,diagram of a location,noun
-Unit 3: Location & Directions,turn,rẽ,to change direction,verb
-Unit 3: Location & Directions,intersection,ngã tư,a point where roads cross,noun
-Unit 3: Location & Directions,straight,đi thẳng,not turning,adv
-Unit 3: Location & Directions,block,khu nhà,section of a street between two crossings,noun
-Unit 4: Money & Payment,fare,cước phí,the cost of transportation,noun
-Unit 4: Money & Payment,tip,tiền boa,extra money given for service,noun
-Unit 4: Money & Payment,charge,tính phí,to ask for payment,verb
-Unit 4: Money & Payment,discount,giảm giá,a reduction in price,noun
-Unit 4: Money & Payment,total,tổng cộng,the final amount,noun
-Unit 4: Money & Payment,cash,tiền mặt,physical money,noun
-Unit 4: Money & Payment,change,tiền thừa,money returned after overpayment,noun
-Unit 4: Money & Payment,receipt,biên lai,a paper showing payment,noun
-Unit 4: Money & Payment,payment,thanh toán,the act of paying money,noun
-Unit 4: Money & Payment,fee,lệ phí,a fixed charge for a service,noun
-Unit 4: Money & Payment,wallet,ví,item for holding money,noun
-Unit 4: Money & Payment,transaction,giao dịch,an exchange of money,noun
-Unit 5: App & Tech Use,app,ứng dụng,a software program on a phone,noun
-Unit 5: App & Tech Use,update,cập nhật,to make something more current,verb
-Unit 5: App & Tech Use,log in,đăng nhập,to enter a system with ID,verb
-Unit 5: App & Tech Use,password,mật khẩu,secret word to access something,noun
-Unit 5: App & Tech Use,signal,tín hiệu,wireless connection strength,noun
-Unit 5: App & Tech Use,offline,ngoại tuyến,not connected to the internet,adj
-Unit 5: App & Tech Use,restart,khởi động lại,to turn off and on again,verb
-Unit 5: App & Tech Use,tap,chạm,touch lightly on screen,verb
-Unit 5: App & Tech Use,swipe,vuốt,move finger across screen,verb
-Unit 5: App & Tech Use,issue,sự cố,a problem,noun
-Unit 5: App & Tech Use,support,hỗ trợ,help provided,noun
-Unit 5: App & Tech Use,setting,cài đặt,configuration options,noun
+"Unit","Từ vựng","Nghĩa tiếng Việt","Định nghĩa tiếng Anh","Từ loại"
+"Unit 1: Appointments & Time","schedule","lịch trình","a plan of activities or events","noun"
+"Unit 1: Appointments & Time","delay","trì hoãn","to postpone; to make late","verb"
+"Unit 1: Appointments & Time","on time","đúng giờ","punctual; not late","phrase"
+"Unit 1: Appointments & Time","confirm","xác nhận","to make sure something is true or set","verb"
+"Unit 1: Appointments & Time","cancel","hủy","to call off or stop something planned","verb"
+"Unit 1: Appointments & Time","urgent","khẩn cấp","requiring immediate attention","adj"
+"Unit 1: Appointments & Time","available","có sẵn","ready for use, free to do something","adj"
+"Unit 1: Appointments & Time","reschedule","lên lịch lại","to set a new time for something","verb"
+"Unit 1: Appointments & Time","appointment","cuộc hẹn","a scheduled meeting or time","noun"
+"Unit 1: Appointments & Time","notice","thông báo, chú ý","information or warning given in advance","noun"
+"Unit 1: Appointments & Time","late","trễ","not on time","adj"
+"Unit 1: Appointments & Time","early","sớm","before the expected time","adj"
+"Unit 2: Customer & Communication","polite","lịch sự","showing good manners","adj"
+"Unit 2: Customer & Communication","request","yêu cầu","a demand or ask for something","noun"
+"Unit 2: Customer & Communication","contact","liên hệ","to get in touch with someone","verb"
+"Unit 2: Customer & Communication","respond","phản hồi","to answer","verb"
+"Unit 2: Customer & Communication","apologize","xin lỗi","to say sorry","verb"
+"Unit 2: Customer & Communication","feedback","phản hồi","opinion or response about a service","noun"
+"Unit 2: Customer & Communication","passenger","hành khách","a person who is transported","noun"
+"Unit 2: Customer & Communication","service","dịch vụ","help or work offered to others","noun"
+"Unit 2: Customer & Communication","complaint","phàn nàn","a statement of dissatisfaction","noun"
+"Unit 2: Customer & Communication","clear","rõ ràng","easy to understand","adj"
+"Unit 2: Customer & Communication","repeat","lặp lại","to say again","verb"
+"Unit 2: Customer & Communication","explain","giải thích","to make something clear","verb"
+"Unit 3: Location & Directions","destination","điểm đến","the place someone is going to","noun"
+"Unit 3: Location & Directions","route","tuyến đường","path from one place to another","noun"
+"Unit 3: Location & Directions","traffic","giao thông","movement of vehicles","noun"
+"Unit 3: Location & Directions","detour","đường vòng","a different way due to a block","noun"
+"Unit 3: Location & Directions","nearby","gần","close in distance","adj"
+"Unit 3: Location & Directions","address","địa chỉ","the number and street of a place","noun"
+"Unit 3: Location & Directions","direction","hướng dẫn đường đi","instructions to go somewhere","noun"
+"Unit 3: Location & Directions","map","bản đồ","diagram of a location","noun"
+"Unit 3: Location & Directions","turn","rẽ","to change direction","verb"
+"Unit 3: Location & Directions","intersection","ngã tư","a point where roads cross","noun"
+"Unit 3: Location & Directions","straight","đi thẳng","not turning","adv"
+"Unit 3: Location & Directions","block","khu nhà","section of a street between two crossings","noun"
+"Unit 4: Money & Payment","fare","cước phí","the cost of transportation","noun"
+"Unit 4: Money & Payment","tip","tiền boa","extra money given for service","noun"
+"Unit 4: Money & Payment","charge","tính phí","to ask for payment","verb"
+"Unit 4: Money & Payment","discount","giảm giá","a reduction in price","noun"
+"Unit 4: Money & Payment","total","tổng cộng","the final amount","noun"
+"Unit 4: Money & Payment","cash","tiền mặt","physical money","noun"
+"Unit 4: Money & Payment","change","tiền thừa","money returned after overpayment","noun"
+"Unit 4: Money & Payment","receipt","biên lai","a paper showing payment","noun"
+"Unit 4: Money & Payment","payment","thanh toán","the act of paying money","noun"
+"Unit 4: Money & Payment","fee","lệ phí","a fixed charge for a service","noun"
+"Unit 4: Money & Payment","wallet","ví","item for holding money","noun"
+"Unit 4: Money & Payment","transaction","giao dịch","an exchange of money","noun"
+"Unit 5: App & Tech Use","app","ứng dụng","a software program on a phone","noun"
+"Unit 5: App & Tech Use","update","cập nhật","to make something more current","verb"
+"Unit 5: App & Tech Use","log in","đăng nhập","to enter a system with ID","verb"
+"Unit 5: App & Tech Use","password","mật khẩu","secret word to access something","noun"
+"Unit 5: App & Tech Use","signal","tín hiệu","wireless connection strength","noun"
+"Unit 5: App & Tech Use","offline","ngoại tuyến","not connected to the internet","adj"
+"Unit 5: App & Tech Use","restart","khởi động lại","to turn off and on again","verb"
+"Unit 5: App & Tech Use","tap","chạm","touch lightly on screen","verb"
+"Unit 5: App & Tech Use","swipe","vuốt","move finger across screen","verb"
+"Unit 5: App & Tech Use","issue","sự cố","a problem","noun"
+"Unit 5: App & Tech Use","support","hỗ trợ","help provided","noun"
+"Unit 5: App & Tech Use","setting","cài đặt","configuration options","noun"
+"Unit 6: At the Office","meeting","cuộc họp","an event where people come together to discuss things","noun"
+"Unit 6: At the Office","deadline","hạn chót","the latest time or date by which something should be completed","noun"
+"Unit 6: At the Office","project","dự án","a planned piece of work that has a specific purpose","noun"
+"Unit 6: At the Office","presentation","bài thuyết trình","a speech or talk in which a new product, idea, or piece of work is shown and explained","noun"
