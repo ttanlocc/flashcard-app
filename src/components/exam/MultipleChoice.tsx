@@ -3,11 +3,16 @@
 import { useState } from 'react';
 import { ExamPart, MultipleChoiceQuestion } from '@/types/types';
 
-export const MultipleChoice = ({ part }: { part: ExamPart }) => {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+interface MultipleChoiceProps {
+  part: ExamPart;
+  userAnswers: { [questionId: string]: any };
+  onAnswerChange: (questionId: string, answer: any) => void;
+}
+
+export const MultipleChoice = ({ part, userAnswers, onAnswerChange }: MultipleChoiceProps) => {
 
   const handleOptionChange = (questionId: string, option: string) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: option }));
+    onAnswerChange(questionId, option);
   };
 
   const questions = part.questions as MultipleChoiceQuestion[];
@@ -29,7 +34,7 @@ export const MultipleChoice = ({ part }: { part: ExamPart }) => {
                     type="radio"
                     name={q.id}
                     value={option}
-                    checked={answers[q.id] === option}
+                    checked={userAnswers[q.id] === option}
                     onChange={() => handleOptionChange(q.id, option)}
                     className="h-4 w-4 cursor-pointer text-blue-600 focus:ring-blue-500"
                   />

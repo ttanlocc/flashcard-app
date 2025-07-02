@@ -3,11 +3,16 @@
 import { useState } from 'react';
 import { ExamPart, FillInBlankQuestion } from '@/types/types';
 
-export const FillInTheBlank = ({ part }: { part: ExamPart }) => {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+interface FillInTheBlankProps {
+  part: ExamPart;
+  userAnswers: { [questionId: string]: any };
+  onAnswerChange: (questionId: string, answer: any) => void;
+}
+
+export const FillInTheBlank = ({ part, userAnswers, onAnswerChange }: FillInTheBlankProps) => {
 
   const handleInputChange = (questionId: string, value: string) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: value }));
+    onAnswerChange(questionId, value);
   };
 
   const questions = part.questions as FillInBlankQuestion[];
@@ -40,7 +45,7 @@ export const FillInTheBlank = ({ part }: { part: ExamPart }) => {
                 <span>{parts[0]}</span>
                 <input
                   type="text"
-                  value={answers[q.id] || ''}
+                  value={userAnswers[q.id] || ''}
                   onChange={(e) => handleInputChange(q.id, e.target.value)}
                   className="inline-block w-48 rounded-md border-gray-300 bg-white px-2 py-1 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
                 />

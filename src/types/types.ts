@@ -59,4 +59,9 @@ export interface Exam {
   id: string;
   title: string;
   parts: ExamPart[];
+}
+
+export interface UserAnswer {
+  questionId: string;
+  answer: any;
 } 

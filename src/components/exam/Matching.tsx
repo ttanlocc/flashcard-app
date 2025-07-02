@@ -1,18 +1,25 @@
 'use client';
 
-import { useState } from 'react';
 import { ExamPart, MatchingQuestion } from '@/types/types';
 
-export const Matching = ({ part }: { part: ExamPart }) => {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+interface MatchingProps {
+  part: ExamPart;
+  userAnswers: { [questionId: string]: any };
+  onAnswerChange: (questionId: string, answer: any) => void;
+}
+
+export const Matching = ({ part, userAnswers, onAnswerChange }: MatchingProps) => {
+  const question = part.questions[0] as MatchingQuestion;
 
   const handleSelectChange = (item: string, value: string) => {
-    setAnswers((prev) => ({ ...prev, [item]: value }));
+    const currentAnswers = userAnswers[question.id] || {};
+    const newAnswers = { ...currentAnswers, [item]: value };
+    onAnswerChange(question.id, newAnswers);
   };
 
-  const question = part.questions[0] as MatchingQuestion;
   const items = question.pairs.map((p) => p.item);
   const options = question.pairs.map((p) => p.match);
+  const currentSelection = userAnswers[question.id] || {};
 
   return (
     <div className="mb-8">
@@ -31,7 +38,7 @@ export const Matching = ({ part }: { part: ExamPart }) => {
             </div>
             <div className="flex items-center">
               <select
-                value={answers[item] || ''}
+                value={currentSelection[item] || ''}
                 onChange={(e) => handleSelectChange(item, e.target.value)}
                 className="w-full rounded-md border-gray-300 bg-white px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
               >
